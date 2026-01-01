@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aroha Mystery Game</title>
+    <link rel="stylesheet" href="assets/styles/menu.css">
+    <link rel="icon" href="assets/images/logo.png">
+</head>
+
+<body>
+    <div>
+        <h1 id="heading">Aroha Mystery Game</h1><br><br>
+        <div id="menu">
+            <div class="game-option" onclick="openGame('knifeHit.html')">
+                <img src="assets/images/knifeHit.png" alt="Knife Hit">
+                <span>🎯 Knfie Hit</span>
+            </div>
+            <div class="game-option" onclick="openGame('puzzle.html')">
+                <img src="assets/images/puzzle.png" alt="Sliding Puzzle">
+                <span>🧩 Sliding Puzzle</span>
+            </div>
+            <div class="game-option" onclick="openGame('2048.html')">
+                <img src="assets/images/2048.png" alt="2048">
+                <span>🔢 2048</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openGame(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Aroha Mystery Game</title>
+<link rel="icon" href="assets/images/logo.png">
+<link rel="stylesheet" href="assets/styles/2048.css">
+</head>
+
+<body>
+<div>
+    <button id="backButton">← Back to Menu</button>
+    <h1 id="heading">2048</h1>
+    <div id="game">
+        <h2>Score: <span id="score">0</span></h2>
+        <div id="board"></div>
+        <div id="controlsHint">
+    <span class="pc">💻 PC: Use Arrow Keys</span>
+    <span class="mobile">📱 Mobile: Swipe Gestures</span>
+</div>
+
+    </div>
+</div>
+
+<div id="popupOverlay">
+    <div id="popup">
+        <h2 id="popupTitle"></h2>
+        <p id="popupMessage"></p>
+        <button onclick="restartGame()">Restart</button>
+    </div>
+</div>
+
+<script src="scripts/2048.js"></script>
+</body>
+</html>

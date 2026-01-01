@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aroha Mystery Game</title>
+  <link rel="icon" href="assets/images/logo.png">
+  <link rel="stylesheet" href="assets/styles/puzzle.css">
+</head>
+<body>
+  <button id="backButton">
+  <span>←</span> Back to Menu
+</button>
+
+  <div>
+    <h1 id="heading">Sliding Puzzle</h1>
+    <div id="grid">
+      <div id="reference">
+        <h2>Visual Hint</h2>
+        <img id="refImg" alt="Reference" />
+        <div id="hint-text">Arrange the tiles to match the image.</div>
+      </div>
+      <div id="game"></div>
+    </div>
+    <div id="popup">
+      <div>
+        <h2>Puzzle Complete 🎉</h2>
+        <p>Great job!</p>
+        <button onclick="location.reload()">Play Again</button>
+      </div>
+    </div>
+  </div>
+  <script src="scripts/puzzle.js"></script>
+</body>
+</html>
