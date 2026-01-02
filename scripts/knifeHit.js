@@ -82,7 +82,7 @@ function check_rect_collision(curarc) {
     for (let i in hit_knifes) {
         if (Math.abs(curarc.current_angle - hit_knifes[i].cangle) < 0.07) {
             isGameOver = true;
-            message = "Aww.. You lost your cool man!";
+            message = "CLINK! Your Blades Collided.";
         }
     }
 }
@@ -113,12 +113,12 @@ function Update() {
     }
     if (isTransitioning) return;
     if (level === 2 && flag === 0) {
+    currentAngle = 0;
     hit_knifes = [
         { x: canvas.width / 2, y: 200, angle: 0, cangle: 0 },
         { x: canvas.width / 2, y: 200, angle: 2.35, cangle: 2.35 }
     ];
     knifes_remaining = 10;
-    currentAngle = 0;
     flag++;
 }
     if (level === 3 && flag === 1) { 
@@ -170,7 +170,6 @@ function Update() {
             ctx.restore();
             k.angle += Math.PI / 180;
             k.angle %= Math.PI * 2;
-            k.cangle = k.angle;
         });
         ctx.save();
         ctx.translate(canvas.width / 2, 200);
