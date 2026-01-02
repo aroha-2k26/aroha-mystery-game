@@ -37,7 +37,7 @@ function handleInput(e) {
 canvas.addEventListener("mousedown", handleInput);
 canvas.addEventListener("touchstart", handleInput, { passive: false });
 document.getElementById("backButton").onclick = () => {
-  window.location.href = "index.html";
+    window.location.href = "index.html";
 };
 function drawInCanvasMessage(msg, submsg) {
     ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
@@ -81,11 +81,12 @@ function startLevelTransition() {
 function check_rect_collision(curarc) {
     for (let i in hit_knifes) {
         if (Math.abs(curarc.current_angle - hit_knifes[i].cangle) < 0.07) {
-            isGameOver = true;
-            message = "CLINK! Your Blades Collided.";
+            showPopup("Game Over", "CLINK! Your Blades Collided.");
+            return;
         }
     }
 }
+
 
 function check_collision(curarc, currec) {
     if (currec.y <= curarc.centerY + 40) {
@@ -108,30 +109,28 @@ function check_collision(curarc, currec) {
 
 function Update() {
     if (isGameOver) {
-        drawInCanvasMessage("GAME OVER", message);
         return;
     }
     if (isTransitioning) return;
     if (level === 2 && flag === 0) {
-    currentAngle = 0;
-    hit_knifes = [
-        { x: canvas.width / 2, y: 200, angle: 0, cangle: 0 },
-        { x: canvas.width / 2, y: 200, angle: 2.35, cangle: 2.35 }
-    ];
-    knifes_remaining = 10;
-    flag++;
-}
-    if (level === 3 && flag === 1) { 
-        hit_knifes = []; 
-        knifes_remaining = 14; 
-        currentAngle = 0; 
-        flag++; 
+        currentAngle = 0;
+        hit_knifes = [
+            { x: canvas.width / 2, y: 200, angle: 0, cangle: 0 },
+        ];
+        knifes_remaining = 14;
+        flag++;
     }
-    if (level === 4 && flag === 2) { 
-        hit_knifes = []; 
-        knifes_remaining = 12; 
-        currentAngle = 0; 
-        flag++; 
+    if (level === 3 && flag === 1) {
+        hit_knifes = [];
+        knifes_remaining = 14;
+        currentAngle = 0;
+        flag++;
+    }
+    if (level === 4 && flag === 2) {
+        hit_knifes = [];
+        knifes_remaining = 12;
+        currentAngle = 0;
+        flag++;
     }
     if (knifes_remaining > 1) {
         if (rectheight < 0 || hit === 1) {
@@ -145,9 +144,7 @@ function Update() {
             radius: wheelRadius,
             current_angle: currentAngle
         };
-
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
         ctx.fillRect(0, 0, canvas.width, 60);
         ctx.fillStyle = "#fff";
@@ -156,7 +153,6 @@ function Update() {
         ctx.fillText("LVL: " + level, 20, 38);
         ctx.textAlign = "right";
         ctx.fillText("KNIVES: " + (knifes_remaining - 1), canvas.width - 20, 38);
-
         ctx.shadowBlur = 10;
         ctx.shadowColor = "rgba(0,0,0,0.5)";
         hit_knifes.forEach(k => {
@@ -178,7 +174,7 @@ function Update() {
         ctx.shadowColor = "rgba(255, 179, 0, 0.3)";
         ctx.drawImage(wheelImg, -(visualWheelSize / 2), -(visualWheelSize / 2), visualWheelSize, visualWheelSize);
         ctx.restore();
-        ctx.shadowBlur = 0; 
+        ctx.shadowBlur = 0;
         ctx.drawImage(knife, canvas.width / 2 - (knifeWidth / 2), rectheight, knifeWidth, knifeHeight);
         currentAngle += Math.PI / 180;
         currentAngle %= Math.PI * 2;
@@ -187,12 +183,22 @@ function Update() {
         raf(Update);
     } else {
         if (level === 4) {
-            isGameOver = true;
-            message = "YOU ARE A KNIFE MASTER!";
-            drawInCanvasMessage("VICTORY", message);
-        } else {
+            showPopup("VICTORY", "You are a knife master!");
+            return;
+        }
+        else {
             startLevelTransition();
         }
     }
 }
+function showPopup(title, message) {
+    gameEnded = true;
+    document.getElementById("popupTitle").textContent = title;
+    document.getElementById("popupMessage").textContent = message;
+    document.getElementById("popupOverlay").style.display = "flex";
+}
+function restartGame() {
+    location.reload();
+}
+
 raf(Update);
