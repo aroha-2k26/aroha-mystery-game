@@ -4,10 +4,10 @@ const knife = new Image();
 knife.src = "assets/images/knife.png";
 const wheelImg = new Image();
 wheelImg.src = "assets/images/log.png";
-const knifeWidth = 80;
-const knifeHeight = 110;
+const knifeWidth = 100;
+const knifeHeight = 130;
 const wheelRadius = 100;
-const visualWheelSize = 260;
+const visualWheelSize = 300;
 let currentAngle = 0;
 let rectheight = canvas.height - 120;
 let knife_moving = 0;
@@ -113,16 +113,26 @@ function Update() {
     }
     if (isTransitioning) return;
     if (level === 2 && flag === 0) {
-        hit_knifes = [
-            { x: canvas.width / 2, y: 200, angle: 0, cangle: 0 },
-            { x: canvas.width / 2, y: 200, angle: 2.35, cangle: 2.35 }
-        ];
-        knifes_remaining = 8;
-        currentAngle = 0;
-        flag++;
+    hit_knifes = [
+        { x: canvas.width / 2, y: 200, angle: 0, cangle: 0 },
+        { x: canvas.width / 2, y: 200, angle: 2.35, cangle: 2.35 }
+    ];
+    knifes_remaining = 10;
+    currentAngle = 0;
+    flag++;
+}
+    if (level === 3 && flag === 1) { 
+        hit_knifes = []; 
+        knifes_remaining = 14; 
+        currentAngle = 0; 
+        flag++; 
     }
-    if (level === 3 && flag === 1) { hit_knifes = []; knifes_remaining = 10; currentAngle = 0; flag++; }
-    if (level === 4 && flag === 2) { hit_knifes = []; knifes_remaining = 12; currentAngle = 0; flag++; }
+    if (level === 4 && flag === 2) { 
+        hit_knifes = []; 
+        knifes_remaining = 12; 
+        currentAngle = 0; 
+        flag++; 
+    }
     if (knifes_remaining > 1) {
         if (rectheight < 0 || hit === 1) {
             rectheight = canvas.height - 120;
@@ -160,6 +170,7 @@ function Update() {
             ctx.restore();
             k.angle += Math.PI / 180;
             k.angle %= Math.PI * 2;
+            k.cangle = k.angle;
         });
         ctx.save();
         ctx.translate(canvas.width / 2, 200);
