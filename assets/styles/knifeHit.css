@@ -56,3 +56,10 @@ canvas {
     max-width: 95vw;
     max-height: 75vh;
 }
+
+@media (max-width: 768px) {
+    canvas{
+        max-width: 85vw;
+        max-height: 65vh; 
+    }
+}
