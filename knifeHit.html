@@ -10,8 +10,15 @@
 <body>
   <button id="backButton">← Back to Menu</button>
   <div>
-  <h1 id="heading">Knife Hit</h1>
-  <canvas id="canvas" width="500" height="700"></canvas>  
+    <h1 id="heading">Knife Hit</h1>
+    <canvas id="canvas" width="500" height="700"></canvas>
+  </div>
+  <div id="popupOverlay">
+    <div id="popup">
+      <h2 id="popupTitle"></h2>
+      <p id="popupMessage"></p>
+      <button onclick="restartGame()">Restart</button>
+    </div>
   </div>
 </body>
 <script src="scripts/knifeHit.js"></script>
