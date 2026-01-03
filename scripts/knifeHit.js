@@ -11,7 +11,7 @@ const visualWheelSize = 300;
 let currentAngle = 0;
 let rectheight = canvas.height - 120;
 let knife_moving = 0;
-let knifes_remaining = 10;
+let knifes_remaining = 11;
 let hit = 0;
 let level = 1;
 let flag = 0;
@@ -114,21 +114,19 @@ function Update() {
     if (isTransitioning) return;
     if (level === 2 && flag === 0) {
         currentAngle = 0;
-        hit_knifes = [
-            { x: canvas.width / 2, y: 200, angle: 0, cangle: 0 },
-        ];
-        knifes_remaining = 14;
+        hit_knifes = [];
+        knifes_remaining = 16;
         flag++;
     }
     if (level === 3 && flag === 1) {
         hit_knifes = [];
-        knifes_remaining = 14;
+        knifes_remaining = 16;
         currentAngle = 0;
         flag++;
     }
     if (level === 4 && flag === 2) {
         hit_knifes = [];
-        knifes_remaining = 12;
+        knifes_remaining = 16;
         currentAngle = 0;
         flag++;
     }
