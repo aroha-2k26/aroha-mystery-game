@@ -1,10 +1,12 @@
 const game = document.getElementById("game");
 const refImg = document.getElementById("refImg");
 const popup = document.getElementById("popup");
+const stepsCount = document.getElementById("steps");
 const img = "assets/images/Aroha.png";
 refImg.src = img;
 let tiles = [];
 let emptyIndex = 8;
+let steps = 0;
 function init() {
     tiles = Array.from({ length: 9 }, (_, i) => i);
     shuffle();
@@ -53,6 +55,7 @@ function move(index) {
 
     if (isAdjacent) {
         [tiles[index], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[index]];
+        steps++;
         render();
         checkWin();
     }
@@ -60,6 +63,7 @@ function move(index) {
 function checkWin() {
     if (tiles.slice(0, 8).every((val, i) => val === i)) {
         popup.style.display = "flex";
+        stepsCount.textContent = steps;
     }
 }
 
