@@ -97,7 +97,9 @@ canvas {
 
 @media (max-width: 768px) {
     canvas{
+        margin-bottom: 80px;
         max-width: 85vw;
         max-height: 65vh; 
     }
 }
+
