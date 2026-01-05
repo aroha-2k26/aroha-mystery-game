@@ -38,7 +38,7 @@ body {
 
 #heading {
     text-align: center;
-    font-size: 60px;
+    font-size: 80px;
     margin-bottom: 28px;
     color: rgb(255, 179, 0);
     font-family: 'Tondu', sans-serif;
@@ -176,4 +176,5 @@ body {
         border-radius: 14px;
         border: 2px solid #c00000;
     }
+
 }
