@@ -165,14 +165,9 @@ h2 {
     }
 }
 
-@media (max-width: 480px) {
-    #popup {
-        max-width: 90vw;
-    }
-}
 
 @media (max-height: 700px) {
     #board {
-        width: min(85vw, 360px);
-    }
+        width: min(75vw, 360px);
+    }  
 }
