@@ -3,11 +3,11 @@ const ctx = canvas.getContext("2d");
 const knife = new Image();
 knife.src = "assets/images/knife.png";
 const wheelImg = new Image();
-wheelImg.src = "assets/images/log.png";
+wheelImg.src = "assets/images/wheel.png";
 const knifeWidth = 100;
 const knifeHeight = 130;
 const wheelRadius = 100;
-const visualWheelSize = 300;
+const visualWheelSize = 260;
 let currentAngle = 0;
 let rectheight = canvas.height - 120;
 let knife_moving = 0;
@@ -200,3 +200,4 @@ function restartGame() {
 }
 
 raf(Update);
+
