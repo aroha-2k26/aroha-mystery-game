@@ -7,7 +7,7 @@ wheelImg.src = "assets/images/wheel.png";
 const knifeWidth = 100;
 const knifeHeight = 130;
 const wheelRadius = 100;
-const visualWheelSize = 260;
+const visualWheelSize = 250;
 let currentAngle = 0;
 let rectheight = canvas.height - 120;
 let knife_moving = 0;
@@ -200,4 +200,5 @@ function restartGame() {
 }
 
 raf(Update);
+
 
