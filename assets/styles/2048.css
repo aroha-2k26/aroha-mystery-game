@@ -170,4 +170,7 @@ h2 {
     #board {
         width: min(75vw, 360px);
     }  
+    #grid{
+        margin-bottom: 50px;
+    }
 }
