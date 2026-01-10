@@ -20,6 +20,8 @@ let isGameOver = false;
 let isTransitioning = false;
 let message = "";
 const raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame;
+const IS_MOBILE = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+const WHEEL_SPEED_MOBILE_MULTIPLIER = IS_MOBILE ? 2 : 1;
 
 function handleInput(e) {
     if (e.cancelable) e.preventDefault();
@@ -174,7 +176,7 @@ function Update() {
         ctx.restore();
         ctx.shadowBlur = 0;
         ctx.drawImage(knife, canvas.width / 2 - (knifeWidth / 2), rectheight, knifeWidth, knifeHeight);
-        currentAngle += Math.PI / 180;
+        currentAngle += (Math.PI / 180) * WHEEL_SPEED_MOBILE_MULTIPLIER;
         currentAngle %= Math.PI * 2;
         if (knife_moving === 1) rectheight -= 22;
         check_collision(current_arc, { x: canvas.width / 2, y: rectheight });
@@ -200,5 +202,3 @@ function restartGame() {
 }
 
 raf(Update);
-
-
